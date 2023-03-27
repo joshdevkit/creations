@@ -7,6 +7,14 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.css">
+  <style>
+  	body{
+  		overflow: hidden;
+  	}
+  	footer{
+  		height: 100px;
+  	}
+  </style>
 </head>
 <body>
   <div class="container mt-2">
@@ -14,7 +22,7 @@
     	<div class="card-header text-center bg-primary text-white">
     		<h1>Rock-Paper-Scissors Game
     			<div class="col-md-12 mt-2">
-					<button class="btn btn-danger" id="Reset">Reset Score!</button>
+					<button class="btn btn-outline-light" id="Reset">Reset Score!</button>
 				</div>
 			</h1>
     	</div>
@@ -23,7 +31,7 @@
     <div class="col-md-12 text-center">
       	<div style="font-weight: bold;" class="alert alert-secondary" role="alert" id="score">Score: 0</div>
     </div>
-      <div class="col-md-4">
+      <div class="col-md-4 col-lg-4">
       	<div class="card text-center">
           <div class="card-body">
             <h5 class="card-title">Rock</h5>
@@ -32,7 +40,7 @@
         </div>
         <button class="btn btn-primary btn-block" id="rock">Choose</button>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-4 col-lg-4">
       	<div class="card text-center">
           <div class="card-body">
             <h5 class="card-title">Paper</h5>
@@ -41,7 +49,7 @@
         </div>
         <button class="btn btn-primary btn-block" id="paper">Choose</button>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-4 col-lg-4">
       	<div class="card text-center">
           <div class="card-body">
             <h5 class="card-title">Scissors</h5>
@@ -56,7 +64,9 @@
   		<h4 class="alert-heading mb-4">Make your choice!</h4>
 	</div>
   </div>
-
+  <footer class="text-center mt-5 bg-secondary py-2 text-white">
+  <p class="mt-2">Developed by Josh Dev &copy; 2023</p>
+</footer>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper-base.min.js"
