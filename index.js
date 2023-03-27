@@ -18,7 +18,7 @@
 
       var $button = $(this);
       var buttonText = $button.text();
-      $button.prop("disabled", true).html('<span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>Loading...');
+      $button.prop("disabled", true).html('<span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>');
 
       setTimeout(function() {
         if (playerChoice === computerChoice) {
