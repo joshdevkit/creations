@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock-Paper-Scissors Game</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.css">
+</head>
+<body>
+  <div class="container mt-2">
+    <div class="card mb-3">
+    	<div class="card-header text-center bg-primary text-white">
+    		<h1>Rock-Paper-Scissors Game
+    			<div class="col-md-12 mt-2">
+					<button class="btn btn-danger" id="Reset">Reset Score!</button>
+				</div>
+			</h1>
+    	</div>
+    </div>
+    <div class="row">
+    <div class="col-md-12 text-center">
+      	<div style="font-weight: bold;" class="alert alert-secondary" role="alert" id="score">Score: 0</div>
+    </div>
+      <div class="col-md-4">
+      	<div class="card text-center">
+          <div class="card-body">
+            <h5 class="card-title">Rock</h5>
+            <i class="fas fa-hand-rock fa-5x text-primary"></i>
+          </div>
+        </div>
+        <button class="btn btn-primary btn-block" id="rock">Choose</button>
+      </div>
+      <div class="col-md-4">
+      	<div class="card text-center">
+          <div class="card-body">
+            <h5 class="card-title">Paper</h5>
+            <i class="fas fa-hand-paper fa-5x text-danger"></i>
+          </div>
+        </div>
+        <button class="btn btn-primary btn-block" id="paper">Choose</button>
+      </div>
+      <div class="col-md-4">
+      	<div class="card text-center">
+          <div class="card-body">
+            <h5 class="card-title">Scissors</h5>
+            <i class="fas fa-hand-scissors fa-5x text-warning"></i>
+          </div>
+        </div>
+        <button class="btn btn-primary btn-block" id="scissors">Choose</button>
+      </div>
+    </div>
+    <br>
+    <div class="alert alert-info text-center" role="alert" id="result">
+  		<h4 class="alert-heading mb-4">Make your choice!</h4>
+	</div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper-base.min.js"
+    integrity="sha384-fsU/oapLW2SwvUc+pCwh2dH4w7fW8e0/VVYR9F9SdV7mJ9VdPyBksaxm7VZgChFZ"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
+    integrity="sha384-zd51LeW+JyR0pIkOztTjcxmRErNCrjKZPwFdY6fJ7d4e+E4lGP2id3qI1Uohz6Uo"
+    crossorigin="anonymous"></script>
+  <script>
+    $(document).ready(function() {
+	  var choices = ["rock", "paper", "scissors"];
+	  var resultDiv = $("#result");
+	  var scoreDiv = $("#score");
+	  var playerScore = 0;
+	  var computerScore = 0;
+	  
+	  $("#rock, #paper, #scissors").click(function() {
+	    var playerChoice = $(this).attr("id");
+	    var computerChoice = choices[Math.floor(Math.random() * choices.length)];
+	    var result;
+	    
+	    if (playerChoice === computerChoice) {
+	      result = "It's a tie!";
+	    } else if ((playerChoice === "rock" && computerChoice === "scissors") ||
+	               (playerChoice === "paper" && computerChoice === "rock") ||
+	               (playerChoice === "scissors" && computerChoice === "paper")) {
+	      playerScore++;
+	      result = "You win!";
+	    } else {
+	      computerScore++;
+	      result = "You lose!";
+	    }
+	    
+	    resultDiv.html("You chose " + playerChoice + ". The computer chose " + computerChoice + ". " + result);
+	    scoreDiv.html("Score: " + playerScore + " - " + computerScore);
+	    
+	   if (computerScore >= 5) {
+	      Swal.fire({
+	        icon: 'error',
+	        title: 'You lose!! Game Over!!',
+	        showConfirmButton: false,
+	        timer: 1500
+	      })
+	      playerScore = 0;
+	      computerScore = 0;
+	      scoreDiv.html("Score: 0 - 0");
+	      setTimeout(function(){
+	      	location.reload();
+	      },1500);
+	    }
+	    else if(playerScore >= 5)
+	    {
+	    	Swal.fire({
+	        icon: 'success',
+	        title: 'You Win!',
+	        showConfirmButton: false,
+	        timer: 1500
+	      })
+	      playerScore = 0;
+	      computerScore = 0;
+	      scoreDiv.html("Score: 0 - 0");
+	      setTimeout(function(){
+	      	location.reload();
+	      },1500);
+	    }
+	  });
+
+	  $("#Reset").click(function() {
+	  if (playerScore === 0 && computerScore === 0) {
+	    Swal.fire({
+	      icon: 'warning',
+	      title: 'No score yet!',
+	      showConfirmButton: false,
+	      timer: 1500
+	    })
+	  } else {
+	    playerScore = 0;
+	    computerScore = 0;
+	    scoreDiv.html("Score: 0 - 0");
+	  }
+	});
+
+	});
+  </script>
+</body>
+</html>
